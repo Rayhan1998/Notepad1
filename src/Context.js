@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 const Context = React.createContext();
 
 function ContextProvider(props) {
-  const [joe, setJoe] = useState("sam");
-
   const data = [
     {
       id: 1,
@@ -13,19 +11,32 @@ function ContextProvider(props) {
     {
       id: 2,
       title: "two",
-      body: "time to go to work"
+      body: "run"
     },
     {
       id: 3,
       title: "three",
-      body: "time to go to work"
+      body: "nap"
     }
   ];
+  const [currentNote, setCurrentNote] = useState(data[0]);
+
+  function selectedNote(id) {
+    const note = data.find(function(note) {
+      if (note.id == id) {
+        return note;
+      }
+    });
+
+    setCurrentNote(note);
+  }
+
   return (
     <Context.Provider
       value={{
-        joe,
-        data
+        data,
+        selectedNote,
+        currentNote
       }}
     >
       {props.children}
