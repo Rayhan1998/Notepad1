@@ -5,13 +5,13 @@ function ContextProvider(props) {
   const data = [
     {
       id: 1,
-      title: "one",
+      title: "note 1",
       body: "time to go to work"
     },
     {
       id: 2,
-      title: "two",
-      body: "run"
+      title: "note 1",
+      body: "note 1"
     },
     {
       id: 3,
@@ -19,10 +19,14 @@ function ContextProvider(props) {
       body: "nap"
     }
   ];
-  const [currentNote, setCurrentNote] = useState(data[0]);
+
+  const [notes, setNotes] = useState(data);
+  const [currentNote, setCurrentNote] = useState(notes[0]);
+
+  useEffect(() => {}, []);
 
   function selectedNote(id) {
-    const note = data.find(function(note) {
+    const note = notes.find(function(note) {
       if (note.id == id) {
         return note;
       }
@@ -34,9 +38,11 @@ function ContextProvider(props) {
   return (
     <Context.Provider
       value={{
-        data,
         selectedNote,
-        currentNote
+        currentNote,
+
+        notes,
+        setNotes
       }}
     >
       {props.children}
