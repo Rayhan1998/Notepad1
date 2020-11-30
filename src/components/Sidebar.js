@@ -10,7 +10,6 @@ export default function Sidebar() {
     setNotes(prevState => [...prevState, { id: id, title: title, body: "" }]);
   }
 
-  console.log(notes);
   return (
     <div className="col-md-3 border border-primary" style={{ height: "100vh" }}>
       <h1>Sidebar</h1>

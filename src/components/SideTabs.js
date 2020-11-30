@@ -3,7 +3,7 @@ import { Context } from "../Context";
 
 export default function SideTabs(props) {
   const { note } = props;
-  const { selectedNote, currentNote } = useContext(Context);
+  const { selectedNote, currentNote, notes } = useContext(Context);
 
   return (
     <h1
